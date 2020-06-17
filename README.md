@@ -1,4 +1,6 @@
-command `imghash` is a simple wrapper around the [corona10/goimagehash](https://github.com/corona10/goimagehash) library.
+> command `imghash` is a simple wrapper around the [corona10/goimagehash](https://github.com/corona10/goimagehash) library.
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/wayneashleyberry/imghash)](https://goreportcard.com/report/github.com/wayneashleyberry/imghash)
 
 ### Installation
 
