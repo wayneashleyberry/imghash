@@ -16,3 +16,13 @@ Usage:
 Flags:
   -h, --help   help for imghash
 ```
+
+### Example
+
+```sh
+$ imghash testdata/octocat-de-los-muertos.jpg
+WYzVi9sUE2Wn8N7KP5uwjg==
+a:c30081c3c3c7e7ff
+d:0f2b1717170f0f1f
+p:bc6bc2b689a5b0a5
+```
