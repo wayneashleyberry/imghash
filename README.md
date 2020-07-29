@@ -34,7 +34,7 @@ d:0f2b1717170f0f1f
 p:bc6bc2b689a5b0a5
 ```
 
-Compare the distance between hashes of two files:
+Calculate the distance between hashes of two images:
 
 ```sh
 $ imghash testdata/octocat-de-los-muertos.jpg testdata/octocat-de-los-muertos.jpg
