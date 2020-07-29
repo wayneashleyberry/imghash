@@ -16,10 +16,14 @@ import (
 
 func main() {
 	var rootCmd = &cobra.Command{
-		Use:  "imghash [file]",
-		Args: cobra.ExactArgs(1),
+		Use:  "imghash [file] [file]",
+		Args: cobra.RangeArgs(1, 2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return run(args[0])
+			if len(args) == 1 {
+				return run(args[0])
+			}
+
+			return compare(args[0], args[1])
 		},
 	}
 
@@ -29,17 +33,89 @@ func main() {
 	}
 }
 
-func run(path string) error {
+func compare(path1, path2 string) error {
+	img1, err := read(path1)
+	if err != nil {
+		return err
+	}
+
+	img2, err := read(path2)
+	if err != nil {
+		return err
+	}
+
+	avg1, err := goimagehash.AverageHash(img1)
+	if err != nil {
+		return fmt.Errorf("average hash: %w", err)
+	}
+
+	avg2, err := goimagehash.AverageHash(img2)
+	if err != nil {
+		return fmt.Errorf("average hash: %w", err)
+	}
+
+	diff1, err := goimagehash.DifferenceHash(img1)
+	if err != nil {
+		return fmt.Errorf("average hash: %w", err)
+	}
+
+	diff2, err := goimagehash.DifferenceHash(img2)
+	if err != nil {
+		return fmt.Errorf("average hash: %w", err)
+	}
+
+	perception1, err := goimagehash.PerceptionHash(img1)
+	if err != nil {
+		return fmt.Errorf("average hash: %w", err)
+	}
+
+	perception2, err := goimagehash.PerceptionHash(img2)
+	if err != nil {
+		return fmt.Errorf("average hash: %w", err)
+	}
+
+	avgDistance, err := avg1.Distance(avg2)
+	if err != nil {
+		return err
+	}
+
+	diffDistance, err := diff1.Distance(diff2)
+	if err != nil {
+		return err
+	}
+
+	perceptionDistance, err := perception1.Distance(perception2)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println(avgDistance)
+	fmt.Println(diffDistance)
+	fmt.Println(perceptionDistance)
+
+	return nil
+}
+
+func read(path string) (image.Image, error) {
 	file, err := os.Open(path)
 	if err != nil {
-		return fmt.Errorf("open: %w", err)
+		return nil, fmt.Errorf("open: %w", err)
 	}
 
 	defer file.Close()
 
 	img, _, err := image.Decode(file)
 	if err != nil {
-		return fmt.Errorf("decode image: %w", err)
+		return nil, fmt.Errorf("decode image: %w", err)
+	}
+
+	return img, nil
+}
+
+func run(path string) error {
+	img, err := read(path)
+	if err != nil {
+		return err
 	}
 
 	avg, err := goimagehash.AverageHash(img)
