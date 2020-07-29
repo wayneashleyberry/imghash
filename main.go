@@ -89,9 +89,9 @@ func compare(path1, path2 string) error {
 		return err
 	}
 
-	fmt.Println(avgDistance)
-	fmt.Println(diffDistance)
-	fmt.Println(perceptionDistance)
+	fmt.Printf("a:%d\n", avgDistance)
+	fmt.Printf("d:%d\n", diffDistance)
+	fmt.Printf("p:%d\n", perceptionDistance)
 
 	return nil
 }
@@ -138,7 +138,7 @@ func run(path string) error {
 		return fmt.Errorf("md5 hash: %w", err)
 	}
 
-	fmt.Println(md5hash)
+	fmt.Println("m:" + md5hash)
 	fmt.Println(avg.ToString())
 	fmt.Println(diff.ToString())
 	fmt.Println(perception.ToString())
