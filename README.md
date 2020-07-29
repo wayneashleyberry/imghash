@@ -14,7 +14,7 @@ go get github.com/wayneashleyberry/imghash
 
 ```sh
 Usage:
-  imghash [file] [flags]
+  imghash [file] [file] [flags]
 
 Flags:
   -h, --help   help for imghash
