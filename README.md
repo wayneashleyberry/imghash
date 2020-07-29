@@ -5,6 +5,8 @@
 
 ### Installation
 
+You may [download the latest release](https://github.com/wayneashleyberry/imghash/releases/latest), or compile the binary yourself.
+
 ```sh
 cd $HOME
 go get github.com/wayneashleyberry/imghash
