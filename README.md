@@ -24,7 +24,7 @@ Flags:
 
 ### Example
 
-Calculate the hash of a single image.
+Calculate the hash of a single image:
 
 ```sh
 $ imghash testdata/octocat-de-los-muertos.jpg
@@ -34,7 +34,14 @@ d:0f2b1717170f0f1f
 p:bc6bc2b689a5b0a5
 ```
 
-Compare the distance between hashes of two files
+Compare the distance between hashes of two files:
+
+```sh
+$ imghash testdata/octocat-de-los-muertos.jpg testdata/octocat-de-los-muertos.jpg
+a:0
+d:0
+p:0
+```
 
 ```sh
 $ imghash testdata/octocat-de-los-muertos.jpg testdata/puddle_jumper_octodex.jpg
