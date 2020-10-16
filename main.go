@@ -16,17 +16,23 @@ import (
 )
 
 func main() {
+	x, y := 4, 3
+
 	rootCmd := &cobra.Command{
 		Use:  "imghash [file] [file]",
 		Args: cobra.RangeArgs(1, 2),
 		RunE: func(cmd *cobra.Command, args []string) error {
+
 			if len(args) == 1 {
-				return run(args[0])
+				return run(args[0], x, y)
 			}
 
 			return compare(args[0], args[1])
 		},
 	}
+
+	rootCmd.Flags().IntVarP(&x, "x-components", "x", 4, "blur hash: x components")
+	rootCmd.Flags().IntVarP(&y, "y-components", "y", 3, "blur hash: y components")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -113,7 +119,7 @@ func read(path string) (image.Image, error) {
 	return img, nil
 }
 
-func run(path string) error {
+func run(path string, xComponents, yComponents int) error {
 	img, err := read(path)
 	if err != nil {
 		return err
@@ -139,7 +145,7 @@ func run(path string) error {
 		return fmt.Errorf("md5 hash: %w", err)
 	}
 
-	bhash, err := blurhash.Encode(4, 3, img)
+	bhash, err := blurhash.Encode(xComponents, yComponents, img)
 	if err != nil {
 		return err
 	}
