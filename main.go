@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	var rootCmd = &cobra.Command{
+	rootCmd := &cobra.Command{
 		Use:  "imghash [file] [file]",
 		Args: cobra.RangeArgs(1, 2),
 		RunE: func(cmd *cobra.Command, args []string) error {
