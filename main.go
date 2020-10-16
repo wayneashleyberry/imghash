@@ -22,7 +22,6 @@ func main() {
 		Use:  "imghash [file] [file]",
 		Args: cobra.RangeArgs(1, 2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-
 			if len(args) == 1 {
 				return run(args[0], x, y)
 			}
