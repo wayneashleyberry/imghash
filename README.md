@@ -28,10 +28,11 @@ Calculate the hash of a single image:
 
 ```sh
 $ imghash testdata/octocat-de-los-muertos.jpg
-m:WYzVi9sUE2Wn8N7KP5uwjg==
+WYzVi9sUE2Wn8N7KP5uwjg==
 a:c30081c3c3c7e7ff
 d:0f2b1717170f0f1f
 p:bc6bc2b689a5b0a5
+LoPG23nO_NozDis;kCWAwIoLR+W;
 ```
 
 Calculate the distance between hashes of two images:

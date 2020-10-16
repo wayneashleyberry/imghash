@@ -10,6 +10,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/buckket/go-blurhash"
 	"github.com/corona10/goimagehash"
 	"github.com/spf13/cobra"
 )
@@ -138,10 +139,16 @@ func run(path string) error {
 		return fmt.Errorf("md5 hash: %w", err)
 	}
 
-	fmt.Println("m:" + md5hash)
+	bhash, err := blurhash.Encode(4, 3, img)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println(md5hash)
 	fmt.Println(avg.ToString())
 	fmt.Println(diff.ToString())
 	fmt.Println(perception.ToString())
+	fmt.Println(bhash)
 
 	return nil
 }
