@@ -20,7 +20,9 @@ Usage:
   imghash [file] [file] [flags]
 
 Flags:
-  -h, --help   help for imghash
+  -h, --help               help for imghash
+  -x, --x-components int   blur hash: x components (default 4)
+  -y, --y-components int   blur hash: y components (default 3)
 ```
 
 ### Example
